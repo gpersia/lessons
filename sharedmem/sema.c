@@ -13,6 +13,8 @@ int main(){
 	sem_wait(&sema);
 	printf ("decremento ...a -1 \n");
 	sem_wait(&sema);
+	printf ("decremento ...a -2 \n");
+	sem_wait(&sema);
 
 	return 0;
 }

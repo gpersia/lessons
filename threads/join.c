@@ -17,7 +17,8 @@ int main(){
 		printf ("hilo creado\n");
 	}
 	//sleep(1);
-	pthread_exit(NULL);
+//	pthread_exit(NULL);
+	pthread_join(tid,NULL);
 	printf("hago algo mas despues que termina el hilo hilo\n");
 	return 0;
 }

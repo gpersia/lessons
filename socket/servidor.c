@@ -31,6 +31,8 @@ int main(){
 	//procrem.sin_addr = 192.168.1.52;
 	procrem.sin_addr.s_addr = htonl(INADDR_ANY);
 	//inet_pton(AF_INET,"0.0.0.0", &procrem.sin_addr);
+	int a;
+	setsockopt(fd, SOL_SOCKET, SO_REUSEADDR,&a, sizeof a);
 	if (bind(fd,(struct sockaddr *)&procrem, sizeof procrem) < 0 ) {
 		perror ("bind");
                 return -1;
@@ -42,10 +44,9 @@ int main(){
 		pid = fork();
 		//hijo
 		if ( pid == 0 ) {
-			while ((leido = read (connfd,buff ,sizeof buff)) > 0 ) {
-				write (1 ,buff ,leido);
-				write (connfd ,buff ,leido);
-			}
+			leido = read (connfd,buff ,sizeof buff);
+			write (1 ,buff ,leido);
+			write (connfd ,buff ,leido);
 		return 0;
 		}
 		close(connfd);

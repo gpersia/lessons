@@ -4,5 +4,5 @@ fd.bind(("192.168.1.52", 8080))
 fd.listen(5)
 (connfd , direccion) = fd.accept()
 
-connfd.send("hola\n")
+connfd.send("url y palabra\n")
 print connfd.recv(100)
